@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToDoController!{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="text-center mt-3">
+
+       <a class="text-decoration-none text-dark fw-bold" href="{{ path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) ) }}">English </a> |
+
+        <a class="text-decoration-none text-dark fw-bold" href="{{ path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">French</a>
+
+    </div>
+  {% if app.user %}
+
+        <h1 class="text-center my-5"> {{ "bienvenue"|trans|upper }} {{ app.user.username }} <i class="fas fa-smile"></i></h1>
+        <hr>
+
+  {% endif %}
+
+    <h3 class="text-center">{{"mestache"|trans|capitalize}}:</h3>
+
+    <hr>
+    <table class="table my-5">
+        <div class ="text-center">
+        {# Plus / moins recent #}
+                  <small>
+                    <a href="{{ path('toDoOrder', {order: 'recent'}) }}" class="btn btn-primary">{{"plusrecent"|trans|upper}}
+                    <i class="fas fa-arrow-up"></i>
+                    </a>
+                 </small>
+                 - <small>
+                    <a href="{{ path('toDoOrder', {order: 'oldest'}) }}" class="btn btn-primary">{{"moinsrecent"|trans|upper}}
+                    <i class="fas fa-arrow-down"></i>
+                    </a>
+                 </small> ------
+        {# Urgent / moins urgent #}
+                <small>
+                    <a href="{{ path('toDoOrder', {order: 'urgent'}) }}" class=" btn btn-success">{{"plusurgent"|trans|upper}}
+                    <i class="fas fa-arrow-down"></i>
+                    </a>
+                 </small>
+                -<small>
+
+                    <a href="{{ path('toDoOrder', {order: 'lessUrgent'}) }}" class=" btn btn-success">{{"moinsurgent"|trans|upper}}
+                    <i class="fas fa-arrow-up"></i>
+                    </a>
+                 </small>
+
+        </div>
+
+            <div class ="text-end my-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><title>ic_lens_48px</title>
+                <g fill="#fccf07">
+                <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4z"></path>
+                </g>
+                </svg> - <strong>{{"datedepasse"|trans}} </strong>
+            <div>
+
+         </div>
+{#                Tasks already done and and total number of tasks #}
+                    <h4>
+                        <strong>Tâches faites: <span class="nbChecks">{{ app.user.getChecks|length }}</span> </strong>  /
+                        <strong>{{ app.user.getTodos |length }}</strong>
+                    </h4>
+
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{"afaire"|trans|capitalize}} </th>
+                <th scope="col">{{"creea"|trans|capitalize}}</th>
+                <th scope="col">{{"dateexpire"|trans|capitalize}}
+                </th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+    {% for todo in todos %}
+
+        {% if app.user %}
+            {% if app.user.id is same as(todo.user.id) %}
+                {# Change color if the task is expired #}
+                {% set colorClass = null %}
+
+                {% if todo.dueDate < date() %}
+                    {% set colorClass = 'bg-warning' %}
+                {% endif %}
+
+                <tr class ="{{colorClass}}">
+                <th scope="row">{{todo.id}}</th>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.createdAt | date('d/m/Y') }} à {{todo.createdAt | date('H:i') }}</td>
+                    <td>{{todo.dueDate | date('d/m/Y') }} à {{todo.dueDate | date('H:i') }} </td>
+                    <td>
+
+        {# C'est fait / PAS FAIT#}
+
+                        <a   href="{{  path('toDoCheck', {id:todo.id}) }}" class="btn btn-primary btnCheck">
+                           <strong>
+                               <span class="checked">
+                                   {% if todo.checked %}
+                                       C'est fait
+                                    {% else  %}
+                                        C'est pas fait
+                                    {% endif %}
+                               </span>
+                           </strong>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{  path('deleteToDo', {id: todo.id} )}}" class="btn btn-danger"> {{ "supprimer"|trans|capitalize }} </a>
+                    </td>
+
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+            </tbody>
+     </table>
+
+</div>
+    <div class="navigation d-flex pagination justify-content-center">
+        {{ knp_pagination_render(todos, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+    </div>
+
+
+    {% block javascripts %}
+        <script>
+
+                function clickForCheck(e) {
+                    e.preventDefault()
+                // AJAX
+                    let url = this.href
+
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', url);
+                    xhr.onload = () => {
+
+                            const data = JSON.parse(xhr.responseText);
+                            console.log(data);
+
+                            let textSpan = '';
+                            let nbChecks = data.nbChecks;
+                            console.log(nbChecks);
+
+                            //number of checks
+                            document.querySelector('.nbChecks').innerHTML = nbChecks;
+
+                                if(data.message == 'checked' ){
+                                    textSpan = "C'est fait";
+                                }
+                                else if(data.message == 'unchecked') {
+                                    textSpan = "C'est pas fait";
+                                }
+                            this.querySelector('.checked').innerHTML = textSpan;
+                    }
+                    xhr.send();
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    const allBtn = document.querySelectorAll('.btnCheck');
+                    allBtn.forEach((btn) =>{
+                        btn.addEventListener('click', clickForCheck)
+                    })
+                })
+
+
+        </script>
+    {% endblock %}
+
+{% endblock %}

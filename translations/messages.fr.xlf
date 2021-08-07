@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+    <!-- Delete -->
+      <trans-unit id="g0KJ6ww" resname="supprimer">
+        <source>supprimer</source>
+        <target>supprimer</target>
+      </trans-unit>
+<!-- My List-->
+      <trans-unit id="5PvlYCL" resname="maliste">
+        <source>maliste</source>
+        <target>ma liste</target>
+      </trans-unit>
+<!-- Add task -->
+      <trans-unit id="kRIzzTb" resname="ajoutetask">
+        <source>ajoutetask</source>
+        <target>ajouter une tâche</target>
+      </trans-unit>
+<!-- Log off -->
+      <trans-unit id="UMwNzqX" resname="sedeconnect">
+        <source>sedeconnect</source>
+        <target>se deconnecter</target>
+      </trans-unit>
+
+      <!-- Login -->
+      <trans-unit id="login" resname="login">
+        <source>login</source>
+        <target>se connecter</target>
+      </trans-unit>
+
+      <!-- Sign up -->
+      <trans-unit id="signup" resname="signup">
+        <source>signup</source>
+        <target>s'inscrire</target>
+      </trans-unit>
+
+<!-- Welcome -->
+      <trans-unit id="QDu1yJp" resname="bienvenue">
+        <source>bienvenue</source>
+        <target>bienvenue</target>
+      </trans-unit>
+
+<!-- My tasks -->
+      <trans-unit id="IT8ywkd" resname="mestache">
+        <source>mestache</source>
+        <target>ma liste de tâches</target>
+      </trans-unit>
+
+<!-- Plus recent -->
+      <trans-unit id="PinUfe5" resname="plusrecent">
+        <source>plusrecent</source>
+        <target>classé par plus recent</target>
+      </trans-unit>
+
+<!-- less recent -->
+      <trans-unit id="pgLA8cU" resname="moinsrecent">
+        <source>moinsrecent</source>
+        <target>classé par moins recent</target>
+      </trans-unit>
+
+<!-- less urgent -->
+      <trans-unit id="_2bMIEV" resname="moinsurgent">
+        <source>moinsurgent</source>
+        <target>classé par moins urgent</target>
+      </trans-unit>
+
+<!-- plus urgent -->
+      <trans-unit id="ZMMpFT5" resname="plusurgent">
+        <source>plusurgent</source>
+        <target>classé par plus urgent</target>
+      </trans-unit>
+
+<!-- Expire date -->
+      <trans-unit id="uXmBTm_" resname="datedepasse">
+        <source>datedepasse</source>
+        <target>date dépassée</target>
+      </trans-unit>
+
+<!-- To do -->
+      <trans-unit id="8N9maYu" resname="afaire">
+        <source>afaire</source>
+        <target>à faire</target>
+      </trans-unit>
+
+<!-- Created At -->
+      <trans-unit id="czepo42" resname="creea">
+        <source>creea</source>
+        <target>creér à</target>
+      </trans-unit>
+      
+<!-- Expire date -->
+      <trans-unit id="cUJtk2N" resname="dateexpire">
+        <source>dateexpire</source>
+        <target>date d'échéance</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

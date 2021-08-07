@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="text-center mt-5"> USER:</h2>
+        <div class="card mx-auto mt-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Username: {{ user.username }}</h5>
+                <p class="card-text">Email:  {{ user.email}}</p>
+                <a href="{{ path('deleteUser', {id: user.id}) }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+
+    <hr>
+    <h2 class="text-center my-3"> Les tâches de {{ user.username}} :</h2>
+
+        <table class="table my-5">
+
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{"afaire"|trans|capitalize}} </th>
+                <th scope="col">{{"creea"|trans|capitalize}}</th>
+                <th scope="col">{{"dateexpire"|trans|capitalize}}
+                </th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+    {% for todo in user.getTodos() %}
+
+            <tr class ="">
+                <th scope="row">{{todo.id}}</th>
+                <td>{{todo.description}}</td>
+                <td>{{todo.createdAt | date('d/m/Y') }} à {{todo.createdAt | date('H:i') }}</td>
+                <td>{{todo.dueDate | date('d/m/Y') }} à {{todo.dueDate | date('H:i') }} </td>
+                <td>
+                    <a href="{{  path('deleteToDoOfUser', {id: todo.id} )}}" class="btn btn-danger"> {{ "supprimer"|trans|capitalize }} </a>
+                </td>
+            </tr>
+
+    {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+{% endblock %}

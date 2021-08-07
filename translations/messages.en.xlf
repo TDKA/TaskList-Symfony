@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="g0KJ6ww" resname="supprimer">
+        <source>supprimer</source>
+        <target>delete</target>
+      </trans-unit>
+      <trans-unit id="5PvlYCL" resname="maliste">
+        <source>maliste</source>
+        <target>my list</target>
+      </trans-unit>
+      <trans-unit id="kRIzzTb" resname="ajoutetask">
+        <source>ajoutetask</source>
+        <target>add a task</target>
+      </trans-unit>
+      <trans-unit id="UMwNzqX" resname="sedeconnect">
+        <source>sedeconnect</source>
+        <target>log off</target>
+      </trans-unit>
+      <trans-unit id="QoghNQ6" resname="login">
+        <source>login</source>
+        <target>sign in </target>
+      </trans-unit>
+      <trans-unit id="fIcYvce" resname="signup">
+        <source>signup</source>
+        <target>sign up</target>
+      </trans-unit>
+      <trans-unit id="QDu1yJp" resname="bienvenue">
+        <source>bienvenue</source>
+        <target>welcome</target>
+      </trans-unit>
+      <trans-unit id="IT8ywkd" resname="mestache">
+        <source>mestache</source>
+        <target>my to-do list</target>
+      </trans-unit>
+      <trans-unit id="PinUfe5" resname="plusrecent">
+        <source>plusrecent</source>
+        <target>sorted by most recent</target>
+      </trans-unit>
+      <trans-unit id="pgLA8cU" resname="moinsrecent">
+        <source>moinsrecent</source>
+        <target>sorted by least recent</target>
+      </trans-unit>
+      <trans-unit id="_2bMIEV" resname="moinsurgent">
+        <source>moinsurgent</source>
+        <target>sorted by less urgent</target>
+      </trans-unit>
+      <trans-unit id="ZMMpFT5" resname="plusurgent">
+        <source>plusurgent</source>
+        <target>sorted by most urgent</target>
+      </trans-unit>
+      <trans-unit id="uXmBTm_" resname="datedepasse">
+        <source>datedepasse</source>
+        <target>date expired</target>
+      </trans-unit>
+      <trans-unit id="8N9maYu" resname="afaire">
+        <source>afaire</source>
+        <target>to do</target>
+      </trans-unit>
+      <trans-unit id="czepo42" resname="creea">
+        <source>creea</source>
+        <target>create at</target>
+      </trans-unit>
+      <trans-unit id="cUJtk2N" resname="dateexpire">
+        <source>dateexpire</source>
+        <target>due date</target>
+      </trans-unit>
+      <trans-unit id="ANgqVRu" resname="ajouteTache">
+        <source>ajouteTache</source>
+        <target>add a task</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
